@@ -33,4 +33,21 @@ def wpm_test(): # Conducts the WPM test
     input("Press Enter when you are ready to start...")
     
     start_time = time.time()  # Start timing
+    typed_text = input("\nStart typing: ")
+    end_time = time.time()  # End timing
    
+    wpm = calculate_wpm(start_time, end_time, typed_text)
+   
+    print(f"\nYour WPM is: {wpm:.2f}") # Prints WPM
+   
+    # Check for accuracy
+    correct_words = sentence.split()
+    typed_words = typed_text.split()
+    correct_count = sum(1 for cw, tw in zip(correct_words, typed_words) if cw == tw)
+    accuracy = (correct_count / len(correct_words)) * 100 if correct_words else 0
+   
+    print(f"Accuracy: {accuracy:.2f}%") # Prints accuracy
+
+
+if __name__ == "__main__":
+    wpm_test()  # Run the WPM tests
